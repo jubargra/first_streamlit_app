@@ -25,8 +25,9 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 streamlit.dataframe(fruits_to_show)
 
+# creating API function
 def get_fruityvice_data(this_fruit_choice):
-  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
   # takes the json, normalizes it, stores in new variable 
   fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
   # uses datraframe(variable) to display it in a table
@@ -34,7 +35,6 @@ def get_fruityvice_data(this_fruit_choice):
 
 #New Section to display fruityvice api response
 streamlit.header('Fruityvice Fruit Advice!')
-
 # Introducing this structure allows us to 
 # separate the code that is loaded once from 
 # the code that should be repeated each time a new value is entered.
